@@ -116,7 +116,7 @@ public partial class App : Application
 
             services.AddSingleton<IStorage, BrowserStorageProvider>();
             */
-            services.AddSingleton<IStorage, DictionaryStorage>();
+            // services.AddSingleton<IStorage, DictionaryStorage>();
         // }
         // else
         // {
