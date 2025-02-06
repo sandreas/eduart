@@ -20,5 +20,20 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Sandreas.Avalonia.SimpleRouter" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.JSInterop">
+      <HintPath>..\..\..\.nuget\packages\microsoft.jsinterop\9.0.1\lib\net9.0\Microsoft.JSInterop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\HomeView.axaml.cs">
+      <DependentUpon>HomeView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

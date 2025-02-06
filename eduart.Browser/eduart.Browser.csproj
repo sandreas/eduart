@@ -13,4 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\eduart\eduart.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interop\" />
+  </ItemGroup>
 </Project>
