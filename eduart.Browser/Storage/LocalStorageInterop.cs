@@ -28,22 +28,20 @@ public static partial class LocalStorageInterop
     {
         _alertTest(key);
     }
-
     
-    
-    [JSImport("setLocalStorage", "wwwroot/localstorage.js")]
+    [JSImport("setLocalStorage", "LocalStorage")]
     internal static partial void _setLocalStorage(string key, string value);
 
-    [JSImport("getLocalStorage", "wwwroot/localstorage.js")]
+    [JSImport("getLocalStorage", "LocalStorage")]
     internal static partial string _getLocalStorage(string key);
     
-    [JSImport("removeLocalStorage", "localstorage.js")]
+    [JSImport("removeLocalStorage", "LocalStorage")]
     internal static partial void _removeLocalStorage(string key);
     
-    [JSImport("clearLocalStorage", "localstorage.js")]
+    [JSImport("clearLocalStorage", "LocalStorage")]
     internal static partial void _clearLocalStorage();
     
-    [JSImport("alertTest", "localstorage.js")]
+    [JSImport("alertTest", "LocalStorage")]
     internal static partial void _alertTest(string message);
 }
 /*

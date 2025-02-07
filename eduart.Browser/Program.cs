@@ -10,8 +10,14 @@ internal sealed partial class Program
 {
     private static async Task Main(string[] args)
     {
-        // await JSHost.ImportAsync("PromisesShim", "/PromisesShim.js");
 
+        
+        // moduleName will be used in [JSImport("<functionName>", "<ModuleName>")]
+        //   [JSImport("<functionName>", "LocalStorage")]
+        // moduleUrl will be referenced from wwwroot and needs a leading /
+        await JSHost.ImportAsync("LocalStorage", 
+            "/localstorage.js");
+        
         await BuildAvaloniaApp()
             .WithInterFont()
             .StartBrowserAppAsync("out");
