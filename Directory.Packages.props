@@ -18,7 +18,9 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
     <PackageVersion Include="Microsoft.JSInterop" Version="9.0.1" />
     <PackageVersion Include="Microsoft.JSInterop.WebAssembly" Version="9.0.1" />
+    <PackageVersion Include="Sandreas.Avalonia.SimplePreferences" Version="0.0.1" />
     <PackageVersion Include="Sandreas.Avalonia.SimpleRouter" Version="0.0.4" />
+    <PackageVersion Include="SoundFlow" Version="1.0.3" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
   </ItemGroup>
 </Project>

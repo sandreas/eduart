@@ -13,9 +13,13 @@
   </Design.DataContext>
     
     <StackPanel>
-        <TextBlock Text="{Binding Counter}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Command="{Binding IncrementCounterCommand}">Increment Counter</Button>
-        <Button Command="{Binding RestoreCounterCommand}">Restore Counter</Button>
+        <TextBlock Text="{Binding Time}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--
+        <Button Command="{Binding JumpBackwardCommand}">↩️</Button>
+        <Button Command="{Binding PlayCommand}">▶</Button>
+        <Button Command="{Binding PauseCommand}">⏸️</Button>
+        <Button Command="{Binding JumpForwardCommand}">↪️</Button>
+        -->
     </StackPanel>
     
 </UserControl>

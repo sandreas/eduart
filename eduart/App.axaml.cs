@@ -4,6 +4,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using Avalonia.SimplePreferences;
+using Avalonia.SimplePreferences.Interfaces;
 using Avalonia.SimpleRouter;
 using eduart.Storage;
 using eduart.ViewModels;
@@ -120,8 +122,12 @@ public partial class App : Application
         // }
         // else
         // {
-            services.AddSingleton<IStorage>(s => Storage);
+            // services.AddSingleton<IStorage>(s => Storage);
         // }
+
+        // services.AddSingleton<PreferencesService>(s => new PreferencesService(new DebugBrowserStorage()));
+        
+        services.AddSingleton<PreferencesService>();
         
         services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new HistoryRouter<ViewModelBase>(t => (ViewModelBase)s.GetRequiredService(t)));
         
