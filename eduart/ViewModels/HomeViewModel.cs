@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using eduart.Helpers;
 using SoundFlow.Backends.MiniAudio;
 using SoundFlow.Components;
 using SoundFlow.Enums;
@@ -38,7 +38,6 @@ public partial class HomeViewModel : ViewModelBase
         */
         
         // var path = "https://download.samplelib.com/mp3/sample-15s.mp3";
-        var path = "/home/andreas/Musik/sample-15s.mp3";
         // AudioSource currentSource = null;
         // Stop previous source
 
@@ -53,19 +52,31 @@ public partial class HomeViewModel : ViewModelBase
 
         currentSource.Play();
         */
+        var audioFileBase64 = Convert.FromBase64String(FileContentsHelper.GetAudioContent());
+        var audioStream = new MemoryStream(audioFileBase64);    
+        
+        /*
+        var path = "../../../../var/audio/samples/sample-15s.mp3";
+        var audioStream = File.OpenRead(path);
+        */    
+        
         
         // Initialize the audio engine with the MiniAudio backend
         using var audioEngine = new MiniAudioEngine(44100, Capability.Playback);
 
 // Create a SoundPlayer and load an audio file
-        var player = new SoundPlayer(new StreamDataProvider(File.OpenRead(path)));
-
+        var player = new SoundPlayer(new StreamDataProvider(audioStream));
+        
 // Add the player to the master mixer
         Mixer.Master.AddComponent(player);
 
 // Start playback
         player.Play();
+        
         Thread.Sleep(3000);
     }
 
+
+    
+    
 }
