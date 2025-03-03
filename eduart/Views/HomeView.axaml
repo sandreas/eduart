@@ -14,12 +14,15 @@
     
     <StackPanel>
         <TextBlock Text="{Binding Time}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <!--
-        <Button Command="{Binding JumpBackwardCommand}">↩️</Button>
-        <Button Command="{Binding PlayCommand}">▶</Button>
-        <Button Command="{Binding PauseCommand}">⏸️</Button>
-        <Button Command="{Binding JumpForwardCommand}">↪️</Button>
-        -->
+        <TextBox Text="{Binding SongUrl}"/>
+        <Button Command="{Binding ChangeSong}" CommandParameter="song1">Song 1</Button>
+        <Button Command="{Binding ChangeSong}" CommandParameter="song2">Song 2</Button>
+        <StackPanel Orientation="Horizontal">
+        <Button Command="{Binding PlayerActionCommand}" CommandParameter="StepBack">↩️</Button>
+        <Button Command="{Binding PlayerActionCommand}" CommandParameter="Play">▶</Button>
+        <Button Command="{Binding PlayerActionCommand}" CommandParameter="Pause">⏸️</Button>
+        <Button Command="{Binding PlayerActionCommand}" CommandParameter="StepForward">↪️</Button>
+        </StackPanel>
     </StackPanel>
     
 </UserControl>
