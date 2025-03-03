@@ -70,7 +70,7 @@ public class AudioPlayerService
                 _player?.Seek(_player.Time + seekOffset);
                 break;
             case SeekOrigin.End:
-                _player?.Seek(_player.Duration - seekOffset);
+                _player?.Seek(_player.Duration + seekOffset);
                 break;
             case SeekOrigin.Begin:
             default:
