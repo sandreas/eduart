@@ -11,7 +11,7 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-    <ContentControl Content="{Binding Content}"></ContentControl>
+    <ContentControl Content="{Binding Content}" Margin="5"/>
     <!--
     <StackPanel>
         <TextBlock Text="{Binding Counter}" HorizontalAlignment="Center" VerticalAlignment="Center"/>

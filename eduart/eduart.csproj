@@ -40,6 +40,15 @@
       <DependentUpon>HomeView.axaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\EditProfileView.axaml.cs">
+      <DependentUpon>EditProfileView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include=".experimental\" />
+    <Folder Include="ViewModels\Profiles\" />
   </ItemGroup>
 
 </Project>

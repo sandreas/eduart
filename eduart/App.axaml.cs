@@ -130,12 +130,16 @@ public partial class App : Application
         // services.AddSingleton<PreferencesService>(s => new PreferencesService(new DebugBrowserStorage()));
         
         services.AddSingleton<PreferencesService>();
-        services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new HistoryRouter<ViewModelBase>(t => (ViewModelBase)s.GetRequiredService(t)));
+        services.AddSingleton<ProfileService>();
         services.AddSingleton<AudioEngine>(s => new MiniAudioEngine(44100, Capability.Playback));
         services.AddSingleton<Mixer>(s => Mixer.Master);
         services.AddSingleton<AudioPlayerService>();
+
+        services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new HistoryRouter<ViewModelBase>(t => (ViewModelBase)s.GetRequiredService(t)));
+
         services.AddSingleton<MainViewModel>();
         services.AddTransient<HomeViewModel>();
+        services.AddTransient<EditProfileViewModel>();
         
         
 

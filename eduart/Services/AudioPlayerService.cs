@@ -35,6 +35,10 @@ public class AudioPlayerService
     }
     private void ReloadDataProvider(ISoundDataProvider networkDataProvider)
     {
+        if (networkDataProvider is NetworkDataProvider ndp)
+        {
+            
+        }
         RemovePlayerComponentFromMixer();
         _dataProvider = networkDataProvider;
         _player = new SoundPlayer(_dataProvider);
