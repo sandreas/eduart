@@ -11,6 +11,9 @@ using eduart.Storage;
 using eduart.ViewModels;
 using eduart.Views;
 using Microsoft.Extensions.DependencyInjection;
+using Projektanker.Icons.Avalonia;
+using Projektanker.Icons.Avalonia.FontAwesome;
+using Projektanker.Icons.Avalonia.MaterialDesign;
 using SoundFlow.Abstracts;
 using SoundFlow.Backends.MiniAudio;
 using SoundFlow.Components;
@@ -30,6 +33,9 @@ public partial class App : Application
     public static IStorage Storage { get; set; } = new DictionaryStorage();
     public override void Initialize()
     {
+        IconProvider.Current
+            .Register<FontAwesomeIconProvider>();
+
         AvaloniaXamlLoader.Load(this);
     }
     
@@ -69,6 +75,7 @@ public partial class App : Application
 */
     public override void OnFrameworkInitializationCompleted()
     {
+
         IServiceProvider services = ConfigureServices();
         var mainViewModel = services.GetRequiredService<MainViewModel>();
 

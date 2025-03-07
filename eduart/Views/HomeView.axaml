@@ -3,20 +3,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:eduart.ViewModels"
+             xmlns:i="https://github.com/projektanker/icons.avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="eduart.Views.HomeView"
-             x:DataType="vm:HomeViewModel">
+             x:DataType="vm:HomeViewModel"
+             Name="Root">
     <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:HomeViewModel />
   </Design.DataContext>
-    
+  <Grid RowDefinitions="Auto,10,*,10,50">
+      <TextBlock Grid.Row="0" Text="Spiel beginnen"/>
+      
+      <ListBox Grid.Row="2" SelectedItem="{Binding SelectedProfile}" ItemsSource="{Binding Profiles}" x:Name="ProfileListing">
+          <ListBox.ItemTemplate>
+              <DataTemplate>
+                  <Border BorderBrush="Silver" BorderThickness="0 0 0 1" Padding="2">
+                      <Grid RowDefinitions="Auto" ColumnDefinitions="*,1.618*,Auto">
+                          <Svg Grid.Row="0" Grid.Column="0" Path="{Binding Image}"/>
+                          <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PlayerName}"/>
+                          <StackPanel Grid.Column="2" Orientation="Horizontal">
+                              <Button Grid.Column="2" Command="{Binding #ProfileListing.((vm:HomeViewModel)DataContext).EditProfileCommand}" CommandParameter="{Binding}">
+                                  <i:Icon Value="fa-edit" FontSize="40" />
+                              </Button>
+                              <Button Grid.Column="2" Command="{Binding #ProfileListing.((vm:HomeViewModel)DataContext).DeleteProfileCommand}" CommandParameter="{Binding}">
+                                  <i:Icon Value="fa-trash-can" FontSize="40" />
+                              </Button>
+                          </StackPanel>
+                      </Grid>
+                  </Border>
+              </DataTemplate>
+          </ListBox.ItemTemplate>
+      </ListBox>
+      
+      <Button Grid.Row="4" Command="{Binding AddProfileCommand}">
+        <i:Icon Value="fa-user-plus" FontSize="40" />
+      </Button>
+
+  </Grid>
+    <!--
     <StackPanel>
         <TextBlock Text="Test" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Command="{Binding AddProfileCommand}"> Profil hinzufügen</Button>
 
-        <!--<TextBox Text="{Binding SongUrl}"/>
+        <TextBox Text="{Binding SongUrl}"/>
         <Button Command="{Binding ChangeSong}" CommandParameter="song1">Song 1</Button>
         <Button Command="{Binding ChangeSong}" CommandParameter="song2">Song 2</Button>
         <StackPanel Orientation="Horizontal">
@@ -25,7 +56,7 @@
         <Button Command="{Binding PlayerActionCommand}" CommandParameter="Pause">⏸️</Button>
         <Button Command="{Binding PlayerActionCommand}" CommandParameter="StepForward">↪️</Button>
         </StackPanel>
-        -->
+        
     </StackPanel>
-    
+    -->
 </UserControl>
