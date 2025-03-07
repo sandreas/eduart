@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using eduart.Models;
 using eduart.Services;
+using eduart.ViewModels.Game;
 
 
 namespace eduart.ViewModels;
@@ -24,7 +25,12 @@ public partial class HomeViewModel : ViewModelBase
 
     partial void OnSelectedProfileChanged(Profile? value)
     {
-        Debug.WriteLine($"Selected profile: {value?.Id} - {value?.PlayerName}");
+        if (value != null)
+        {
+            // todo idea: _gameService.Start(value);
+            var vm = _router.GoTo<GameMainViewModel>();
+            vm.Profile = value;
+        }
     }
     
     
@@ -47,11 +53,18 @@ public partial class HomeViewModel : ViewModelBase
         var vm = _router.GoTo<EditProfileViewModel>();
         vm.Profile = profile;
     }
-    
+
 
     [RelayCommand]
     private void DeleteProfile(Profile profile)
     {
+        // Todo idea: 
+        // var confirm = _router.Goto<ConfirmationViewModel>();
+        // confirm.DeleteHandler("Möchten Sie dem Gerät wirklich löschen?", () => {
+        //  _profileService.Remove(profile.Id);
+        //  _profileService.SaveAsync();
+        // }
+        //
         
     }
     

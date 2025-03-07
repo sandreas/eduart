@@ -35,6 +35,12 @@ public partial class EditProfileViewModel: ViewModelBase
         PlayerName = value.Characters.FirstOrDefault(c => c.Type == CharacterType.Player)?.Name ?? "";
         NpcName = value.Characters.FirstOrDefault(c => c.Type == CharacterType.Npc)?.Name ?? "";
     }
+
+    [RelayCommand]
+    public void Cancel()
+    {
+        _router.GoTo<HomeViewModel>();
+    }
     
     [RelayCommand]
     public void Save()
@@ -44,8 +50,9 @@ public partial class EditProfileViewModel: ViewModelBase
             Profile.MaxPlayTime = TimeSpan.FromMinutes(maxPlayTime);
         }
 
+        
         CreateOrUpdateCharacter(CharacterType.Player, PlayerName);
-        CreateOrUpdateCharacter(CharacterType.Player, PlayerName);
+        CreateOrUpdateCharacter(CharacterType.Npc, NpcName);
 
         if (!_profileService.Profiles.Contains(Profile))
         {
@@ -64,10 +71,10 @@ public partial class EditProfileViewModel: ViewModelBase
     {
         var character = Profile.Characters.FirstOrDefault(c => c.Type == type) ?? new Character()
         {
-            Type = CharacterType.Player,
+            Type = type,
             Name = PlayerName
         };
-
+        character.Name = name;
         if (!Profile.Characters.Contains(character))
         {
             Profile.Characters.Add(character);

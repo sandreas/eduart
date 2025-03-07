@@ -1,5 +1,10 @@
 # Story and resources
 
+## commands
+```bash
+dotnet new avalonia.usercontrol -o Views/Game/ -n GameMainView  --namespace eduart.Views.Game
+```
+
 ## resources
 ### Background Music
 https://www.youtube.com/watch?v=mwAfRDyldZ4&list=PLsVfn9YIFmNC3SL_FgAe6k4_is4stMOh2&index=18

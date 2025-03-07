@@ -22,7 +22,7 @@
                   <Border BorderBrush="Silver" BorderThickness="0 0 0 1" Padding="2">
                       <Grid RowDefinitions="Auto" ColumnDefinitions="*,1.618*,Auto">
                           <Svg Grid.Row="0" Grid.Column="0" Path="{Binding Image}"/>
-                          <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PlayerName}"/>
+                          <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PlayerName}" FontSize="30"/>
                           <StackPanel Grid.Column="2" Orientation="Horizontal">
                               <Button Grid.Column="2" Command="{Binding #ProfileListing.((vm:HomeViewModel)DataContext).EditProfileCommand}" CommandParameter="{Binding}">
                                   <i:Icon Value="fa-edit" FontSize="40" />

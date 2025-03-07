@@ -9,6 +9,7 @@ using Avalonia.SimpleRouter;
 using eduart.Services;
 using eduart.Storage;
 using eduart.ViewModels;
+using eduart.ViewModels.Game;
 using eduart.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Projektanker.Icons.Avalonia;
@@ -147,6 +148,7 @@ public partial class App : Application
         services.AddSingleton<MainViewModel>();
         services.AddTransient<HomeViewModel>();
         services.AddTransient<EditProfileViewModel>();
+        services.AddTransient<GameMainViewModel>();
         
         
 

@@ -20,7 +20,8 @@
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding NpcName}"/>
         
         <Grid Grid.Row="8"  Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="*,*" HorizontalAlignment="Center">
-            <Button Command="{Binding SaveCommand}" Content="Speichern"/>
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding CancelCommand}">Abbrechen</Button>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding SaveCommand}" Content="Speichern" IsDefault="True" />
         </Grid>
         </Grid>
 </UserControl>
