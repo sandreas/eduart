@@ -3,7 +3,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
+using System.Reflection;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
 using Avalonia.SimplePreferences;
 using Avalonia.SimpleRouter;
 using eduart.Services;
@@ -138,10 +140,17 @@ public partial class App : Application
         // services.AddSingleton<PreferencesService>(s => new PreferencesService(new DebugBrowserStorage()));
         
         services.AddSingleton<PreferencesService>();
+        services.AddSingleton<AssetsService>(s => new AssetsService("eduart", (Uri a, Uri? b) =>
+        {
+            return AssetLoader.Open(a, b);
+        }));
         services.AddSingleton<ProfileService>();
+        
+        services.AddSingleton<GameService>();
+
         services.AddSingleton<AudioEngine>(s => new MiniAudioEngine(44100, Capability.Playback));
         services.AddSingleton<Mixer>(s => Mixer.Master);
-        services.AddSingleton<AudioPlayerService>();
+        services.AddSingleton<AudioService>();
 
         services.AddSingleton<HistoryRouter<ViewModelBase>>(s => new HistoryRouter<ViewModelBase>(t => (ViewModelBase)s.GetRequiredService(t)));
 

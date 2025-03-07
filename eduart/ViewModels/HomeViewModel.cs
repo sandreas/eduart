@@ -13,32 +13,44 @@ namespace eduart.ViewModels;
 
 public partial class HomeViewModel : ViewModelBase
 {
-    // private readonly PreferencesService _prefs;
-    private readonly ProfileService _profileService;
     private readonly HistoryRouter<ViewModelBase> _router;
+    private readonly ProfileService _profileService;
+    private readonly GameService _gameService;
+    private readonly AudioService _audioService;
+    private readonly AssetsService _assetsService;
+
 
     [ObservableProperty]
     private Profile? _selectedProfile;
-    
+
+
     public List<Profile> Profiles => _profileService.Profiles;
 
 
+    
+    public HomeViewModel(HistoryRouter<ViewModelBase> router, ProfileService profileService, GameService gameService, AudioService audioService, AssetsService assetsService)
+    {
+        _router = router;
+        _profileService = profileService;
+        _gameService = gameService;
+        _audioService = audioService;
+        _assetsService = assetsService;
+
+        _audioService.ChangeBackgroundMusic(_assetsService.Open("/Assets/audio/background-music/game-music-loop-6-144641.mp3"));
+        
+    }
+    
+    
     partial void OnSelectedProfileChanged(Profile? value)
     {
         if (value != null)
         {
-            // todo idea: _gameService.Start(value);
-            var vm = _router.GoTo<GameMainViewModel>();
-            vm.Profile = value;
+            _gameService.SwitchProfile(value);
+            _router.GoTo<GameMainViewModel>();
+            _audioService.PlaySound(_assetsService.Open("/Assets/audio/sounds/game-start-6104.mp3"));
         }
     }
-    
-    
-    public HomeViewModel(HistoryRouter<ViewModelBase> router, ProfileService profileService)
-    {
-        _router = router;
-        _profileService = profileService;
-    }
+
 
     [RelayCommand]
     private void AddProfile()
