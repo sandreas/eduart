@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using SoundFlow.Abstracts;
 using SoundFlow.Components;
 using SoundFlow.Providers;
@@ -13,6 +14,18 @@ public class AudioService
     private SoundPlayer? _backgroundPlayer;
     private SoundPlayer? _foregroundPlayer;
 
+    public float BackgroundVolume
+    {
+        get => _backgroundPlayer?.Volume ?? 1f;
+        set
+        {
+            if (_backgroundPlayer is null)
+            {
+                return;
+            }
+            _backgroundPlayer.Volume = value;
+        }
+    }
 
     public AudioService(AudioEngine engine, Mixer mixer)
     {

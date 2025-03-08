@@ -158,6 +158,7 @@ public partial class App : Application
         services.AddTransient<HomeViewModel>();
         services.AddTransient<EditProfileViewModel>();
         services.AddTransient<GameMainViewModel>();
+        services.AddTransient<GameLivingRoomViewModel>();
         
         
 
